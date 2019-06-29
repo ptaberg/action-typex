@@ -1,0 +1,27 @@
+{
+  "name": "action-typex",
+  "version": "1.0.0",
+  "description": "The flux action types generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptaberg/action-typex.git"
+  },
+  "keywords": [
+    "flux",
+    "redux",
+    "actions",
+    "types",
+    "vuex",
+    "generator"
+  ],
+  "author": "Kolja P.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ptaberg/action-typex/issues"
+  },
+  "homepage": "https://github.com/ptaberg/action-typex#readme"
+}
