@@ -15,7 +15,7 @@ const {
 
 // 2. Generate some function for generating your action types series using configureActionTypes()
 // You can use initialConfig or your own config as object {postfix, separator}
-const  asyncThunkActionTypes  =  configureActionTypes(initialConfig);
+const asyncThunkActionTypes = configureActionTypes(initialConfig);
 
 // 3. createActionTypesGroup returns another function using HOF you get from configure,
 // and you can set arguments for getting action types you need
