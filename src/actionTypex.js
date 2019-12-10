@@ -3,7 +3,7 @@ const initialConfig = {
   separator: '/'
 }
 
-const configureActionTypes = ({postfix, separator} = initialConfig) => (actionType) => {
+const configureActionTypes = ({postfix, separator} = initialConfig) => actionType => {
   let resultObject = {};
 
   postfix.map(pf => resultObject[`${actionType}_${pf}`] = `${actionType}${separator}${pf}`);
