@@ -1,5 +1,5 @@
 # Action Typex
-**ActionTypes** is a library which helps you generate action types in your flux architecture. It contains high-order functions and functions which get your arguments and return an object with required values which contain action types into your project.
+**ActionTypex** is a library which helps you generate action types in your flux architecture. It contains high-order functions and functions which get your arguments and return an object with required values which contain action types into your project.
 
 This library is very good for legacy project with pure Redux, where thousands strings of action types.
 
@@ -17,6 +17,7 @@ export const actionTypes = configureActionTypes({
 ## createActionTypesGroup
 ```javascript
 import { createActionTypesGroup } from 'action-typex';
+import { actionTypes } from './path/to/actions';
 
 const actionTyper = createActionTypesGroup(actionTypes);
 
