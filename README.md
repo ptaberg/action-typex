@@ -1,33 +1,51 @@
 # Action Typex
-> **ActionTypes** is a library which helps you generate action types in your flux architecture. It contains high-order functions and functions which get your arguments and return an object with required values which contain action types into your project.
+**ActionTypes** is a library which helps you generate action types in your flux architecture. It contains high-order functions and functions which get your arguments and return an object with required values which contain action types into your project.
 
-## Example
+This library is very good for legacy project with pure Redux, where thousands strings of action types.
+
+## configureActionTypes
 ```javascript
-// 1. Import all functions from NPM package
-// P.S. Here is a CommonJS, but using with bundler you can use `import`
-import {
-  configureActionTypes,
-  createActionTypesGroup,
-  combineActionTypes,
-  createStaticActions
-} from 'action-typex';
+// Import all functions from NPM package
+import { configureActionTypes } from 'action-typex';
 
-// 2. Generate some function for generating your action types series using configureActionTypes()
-// You can use initialConfig or your own config as object {postfix, separator}
-const asyncThunkActionTypes = configureActionTypes();
+export const actionTypes = configureActionTypes({
+  postfix: ['SUCCESS', 'ERROR', 'LOADING'], 
+  separator: '/'
+});
+```
 
-// 3. createActionTypesGroup returns another function using HOF you get from configure,
-// and you can set arguments for getting action types you need
-createActionTypesGroup(asyncThunkActionTypes)('MAKE_PAYMENT', 'GET_TOKEN'),
+## createActionTypesGroup
+```javascript
+import { createActionTypesGroup } from 'action-typex';
 
-// 4. createStaticActions returns an object with `key = value` using every argument
-createStaticActions('SET_VISABILITY', 'GET_NAME')
+const actionTyper = createActionTypesGroup(actionTypes);
 
-// 5. And combineActionTypes helps you to combine all your generations into one object for export
-combineActionTypes(
-  createActionTypesGroup(asyncThunkActionTypes)('MAKE_PAYMENT', 'GET_TOKEN'),
-  createStaticActions('SET_VISANILITY', 'GET_NAME') 
+export const paymentTypes = actionTyper('MAKE_PAYMENT', 'GET_TOKEN');
+```
+
+## createStaticActions
+```javascript
+import { createStaticActions } from 'action-typex';
+
+const profileTypes = createStaticActions('SET_VISABILITY', 'GET_NAME');
+```
+
+## combineActionTypes
+```javascript
+// actionsTypes.js
+
+import { combineActionTypes } from 'action-typex';
+import { paymentTypes } from './path/actionTypers/payment';
+import { profileTypes } './path/staticActions/profile;
+
+export default combineActionTypes(
+  paymentTypes,
+  profileTypes
 )
+```
+
+As result of *combineActionTypes* you can see:
+```javascript
 // {
 //    MAKE_PAYMENT_SUCCESS: 'MAKE_PAYMENT/SUCCESS',
 //    MAKE_PAYMENT_ERROR: 'MAKE_PAYMENT/ERROR',
