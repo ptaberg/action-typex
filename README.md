@@ -37,7 +37,7 @@ const profileTypes = createStaticActions('SET_VISABILITY', 'GET_NAME');
 
 import { combineActionTypes } from 'action-typex';
 import { paymentTypes } from './path/actionTypers/payment';
-import { profileTypes } from './path/staticActions/profile;
+import { profileTypes } from './path/staticActions/profile';
 
 const actionTypes = combineActionTypes(
   paymentTypes,
